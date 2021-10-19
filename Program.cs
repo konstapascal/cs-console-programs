@@ -6,31 +6,47 @@ namespace csharp_console_calculator
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter the first number: ");
+            Print("Enter the first number: ");
             int num1 = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("\nEnter operand (+ or -):");
+            Print("\nEnter operand (+ or -):");
             string operand = Console.ReadLine();
 
-            Console.WriteLine("\nEnter the second number: ");
+            Print("\nEnter the second number: ");
             int num2 = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("\nNumber 1 was " + num1);
-            Console.WriteLine("Number 2 was " + num2);
-            Console.WriteLine("Operand was " + operand);
+            Print("\nNumber 1 was " + num1);
+            Print("Number 2 was " + num2);
+            Print("Operand was " + operand);
 
             switch (operand)
             {
                 case "+":
-                    Console.WriteLine("\nSum is: " + (num1 + num2));
+                    Print("\nSum is: " + Add(num1, num2));
                     break;
                 case "-":
-                    Console.WriteLine(num1 - num2);
+                    Print("\nDifference is: " + Subtract(num1, num2));
                     break;
                 default:
-                    Console.WriteLine("Provided operand is not valid.");
+                    Print("Provided operand is not valid.");
                     break;
             }
         }
+
+        static void Print(string str)
+        {
+            Console.WriteLine(str);
+        }
+        static int Add(int num1, int num2 )
+        {
+            int result = num1 + num2;
+            return result;
+        }
+        static int Subtract(int num1, int num2)
+        {
+            int result = num1 - num2;
+            return result;
+        }
+
     }
 }
