@@ -1,30 +1,37 @@
 ﻿using System;
 
-namespace csharp_console_calculator
+namespace cs_console_programs
 {
     class Program
     {
         static void Main(string[] args)
         {
+            const int PROGRAM_COUNT = 2;
 
             Console.WriteLine("Choose a program to start:\n" +
                 "\n1 - Simple Calculator" +
                 "\n2 - Number Guesser\n");
 
-            int game = Convert.ToInt32(Console.ReadLine());
+            int program = Convert.ToInt32(Console.ReadLine());
 
-            if (game == 1)
+            while (program < 1 || program > PROGRAM_COUNT)
             {
-                Console.WriteLine("\nYou have chosen to try the Simple Calculator!\n");
-                Games.SimpleCalculatorGame();
-            } else if (game == 2)
+                Console.WriteLine($"\nInvalid number, choose a program number between 1 and {PROGRAM_COUNT}.");
+                program = Convert.ToInt32(Console.ReadLine());
+            } 
+
+            switch (program)
             {
-                Console.WriteLine("\nYou have chosen to try the Number Guesserer!\n");
-                Games.NumberGuesserGame();
-            } else
-            {
-                Console.WriteLine($"\nNo game with the id of {game}!");
+                case 1:
+                    Console.WriteLine("\nYou have chosen to try the Simple Calculator!");
+                    Games.SimpleCalculatorGame();
+                    return;
+                case 2:
+                    Console.WriteLine("\nYou have chosen to try the Number Guesser!");
+                    Games.NumberGuesserGame();
+                    return;
             }
+
         }
     }
 }

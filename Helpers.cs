@@ -1,4 +1,4 @@
-﻿namespace csharp_console_calculator
+﻿namespace cs_console_programs
 {
     public static class Helpers
     {
