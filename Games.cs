@@ -9,28 +9,56 @@ namespace cs_console_programs
         public static void SimpleCalculatorGame()
         {
             Console.WriteLine("Enter the first number: ");
-            int num1 = Convert.ToInt32(Console.ReadLine());
+            string input1 = Console.ReadLine();
+            int value1;
 
-            Console.WriteLine("\nEnter operand (+ or -):");
+            while (!int.TryParse(input1, out value1))
+            {
+                Console.WriteLine("\nERR: Input is not a valid number. Try again!");
+                input1 = Console.ReadLine();
+            }
+
+            string[] operands = { "+", "-", "*", "/" };
+
+            Console.WriteLine("\nEnter operand:");
             string operand = Console.ReadLine();
 
-            Console.WriteLine("\nEnter the second number: ");
-            int num2 = Convert.ToInt32(Console.ReadLine());
+            while(!Array.Exists(operands, val => val == operand))
+            {
+                Console.WriteLine("\nERR: Input is not a valid operand. Try again!");
+                operand = Console.ReadLine();
+            }
 
-            Console.WriteLine("\nNumber 1 was " + num1);
-            Console.WriteLine("Number 2 was " + num2);
+            Console.WriteLine("\nEnter the second number: ");
+            string input2 = Console.ReadLine();
+            int value2;
+
+            while (!int.TryParse(input2, out value2))
+            {
+                Console.WriteLine("\nERR: Input is not a valid number. Try again!");
+                input2 = Console.ReadLine();
+            }
+
+            Console.WriteLine("\nNumber 1 was " + value1);
             Console.WriteLine("Operand was " + operand);
+            Console.WriteLine("Number 2 was " + value2);
 
             switch (operand)
             {
                 case "+":
-                    Console.WriteLine("\nSum is: " + Helpers.Add(num1, num2));
+                    Console.WriteLine("\nResult is: " + Helpers.Add(value1, value2));
                     break;
                 case "-":
-                    Console.WriteLine("\nDifference is: " + Helpers.Subtract(num1, num2));
+                    Console.WriteLine("\nResult is: " + Helpers.Subtract(value1, value2));
+                    break;
+                case "*":
+                    Console.WriteLine("\nResult is: " + Helpers.Multiply(value1, value2));
+                    break;
+                case "/":
+                    Console.WriteLine("\nResult is: " + Helpers.Divide(value1, value2));
                     break;
                 default:
-                    Console.WriteLine("\nProvided operand is not valid.");
+                    Console.WriteLine("\nERR: Provided operand is not valid.");
                     break;
             }
         }
@@ -65,7 +93,7 @@ namespace cs_console_programs
                 }
 
                 if (guess == answer) Console.WriteLine($"\nCongratulations, the number was {answer}!\n" +
-                    $"You have won with {tries} tries left.\n");
+                    $"You have won with {tries} tries left.");
             }
         }
     }

@@ -7,7 +7,6 @@ namespace cs_console_programs
         static void Main(string[] args)
         {
             const int PROGRAM_COUNT = 2;
-
             Console.WriteLine("Choose a program to start:\n" +
                 "\n1 - Simple Calculator" +
                 "\n2 - Number Guesser\n");
